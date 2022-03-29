@@ -1,23 +1,32 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import classNames from 'classnames';
 
-export const Nav = () => {
+import './styles.css';
+
+export const Nav = ({ goods, isFetchFailed, isDataLoading}) => {
+  const buttonClass = classNames(
+    'button',
+    'is-link', {
+      'disabled': !goods && isFetchFailed,
+      'is-loading': isDataLoading
+    }
+  )
+
   return (
-    <nav className='navbar'>
-      <div className='navbar-start'>
-        <Link to="/" className='navbar-item'>
-          Home
-        </Link>
-        <Link to="/goodsTotal" className='navbar-item'>
-          Total amount of goods
-        </Link>
-        <Link to="/goodsList" className='navbar-item'>
-          Goods list
-        </Link>
-        <Link to="/goodsWithParts" className='navbar-item'>
-          Goods with parts
-        </Link>
-      </div>
-    </nav>
+    <div className='nav'>
+      <Link to="/" className={buttonClass}>
+        Home
+      </Link>
+      <Link to="/goods-total" className={buttonClass}>
+        Total amount of goods
+      </Link>
+      <Link to="/goods-list" className={buttonClass}>
+        Goods list
+      </Link>
+      <Link to="/goods-with-parts" className={buttonClass}>
+        Goods with parts
+      </Link>
+    </div>
   );
 };

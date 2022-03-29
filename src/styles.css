@@ -1,2 +1,6 @@
 @import "https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css";
 
+.nav {
+    display: flex;
+    gap: 15px;
+}

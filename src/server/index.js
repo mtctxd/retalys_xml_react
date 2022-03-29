@@ -25,16 +25,5 @@ app
         res.send(result.export_full);
       });
     });
-
-    // const xml = fs.readFileSync(file, 'utf-8');
-    // const options = {
-    //     ignoreComment: true, 
-    //     alwaysChildren: false, 
-    //     alwaysArray: false
-    // };
-
-    // const result = convert.xml2js(xml, options);
-
-    // res.send(result);
   })
   .listen(PORT, () => console.log(`Listening on ${PORT}`));
