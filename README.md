@@ -2,6 +2,32 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+## Startup guide
+
+1. `npm i`
+2. `npm run server`
+3. `open another terminal`
+4. `npm start`
+5. `open your browser at http://localhost:3000`
+
+## Main task
+
+Given some data in XML format. Process that data and:
+1. The total number of products
+2. The names of the products (just write down a simple list, no need to be creative with formatting) 
+3. For each product write down a list of its spare parts (not all products have them)
+
+The script may look like, that will be possible to select three methods (links) according to the number of
+the task and under each link there will be the individual statements.
+
+## Technologies that i used
+
+- React.JS
+- Typescript
+- React router
+- Express JS
+- xml2js
+
 ## Available Scripts
 
 In the project directory, you can run:
