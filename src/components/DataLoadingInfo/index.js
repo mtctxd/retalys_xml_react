@@ -1,3 +1,3 @@
-import { DataLoadingInfo } from './DataLoadingInfo.tsx';
+import DataLoadingInfo from './DataLoadingInfo.tsx';
 
 export default DataLoadingInfo;
