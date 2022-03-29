@@ -1,5 +1,7 @@
 import React from 'react';
 
+import './App.css';
+
 
 export const GoodsWithPartsList = ({ goods }) => {
     const { item } = goods.items[0];

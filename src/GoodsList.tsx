@@ -1,5 +1,6 @@
 import React from 'react';
 
+import './App.css';
 
 export const GoodsList = ({ goods }) => {
   const { item } = goods.items[0];

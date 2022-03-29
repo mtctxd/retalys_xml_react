@@ -14,6 +14,12 @@ Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 The page will reload if you make edits.\
 You will also see any lint errors in the console.
 
+### `npm run server`
+
+Runs the app in the development mode.\
+Starts server [http://localhost:3001](http://localhost:3001) to view it in the browser.
+There is one [tab /goods](http://localhost:3001/goods) that make request to server and return data as JS object.
+
 ### `npm test`
 
 Launches the test runner in the interactive watch mode.\

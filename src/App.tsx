@@ -1,49 +1,16 @@
 import React, { useState } from 'react';
 import { useEffect } from 'react';
-import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 
 import './App.css';
+
+import { DataLoadingInfo } from './DataLoadingInfo.tsx';
 import { GoodsList } from './GoodsList.tsx';
 import { GoodsWithPartsList } from './GoodsWithPartsList.tsx';
+import { Nav } from './Nav.tsx';
 import { TotalGoods } from './TotalGoods.tsx';
 
-const Nav = () => {
-  return (
-    <div>
-      <Link to="/">
-        Home
-      </Link>
-      <Link to="/goodsTotal">
-        Total amount of goods
-      </Link>
-      <Link to="/goodsList">
-        Goods list
-      </Link>
-      <Link to="/goodsWithParts">
-        Goods with parts
-      </Link>
-    </div>
-  );
-}; 
-
-const DataLoadingInfo = ({ goods, isFetchFailed}) => {
-  return (
-    <div>
-      {!goods && (
-        `Loading goods from server...`
-      )}
-      {isFetchFailed && (
-        `Failed to load goods`
-      )}
-      {(goods && !isFetchFailed) && (
-        `Data is loaded`
-      )}
-    </div>
-  );
-};
-
-// need to change here, it do make request to port 3000 if i only type /goods
 const getGoods = () => {
   return fetch('/goods')
     .then(response => response.json());
@@ -61,7 +28,7 @@ export const App = () => {
 
   return (
     <Router>
-      <div className='App'>
+      <div>
         <Nav />
         <Routes>
           <Route 

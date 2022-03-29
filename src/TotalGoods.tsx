@@ -1,5 +1,7 @@
 import React from 'react';
-import { useLocation } from 'react-router-dom';
+
+import './App.css';
+
 
 export const TotalGoods = ({ goods, isFetchFailed }) => {
 
