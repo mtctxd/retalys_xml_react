@@ -2,7 +2,6 @@ import express from 'express';
 import path from 'path';
 import fs from 'fs';
 import xml2js from 'xml2js';
-// import convert from 'xml-js';
 import cors from 'cors';
 import { fileURLToPath } from 'url';
 

@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import classNames from 'classnames';
 
-import './styles.css';
+import '../../styles.css';
 
 export const Nav = ({ goods, isFetchFailed, isDataLoading}) => {
   const buttonClass = classNames(

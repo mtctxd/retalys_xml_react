@@ -5,16 +5,14 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 import './styles.css';
 
-import { DataLoadingInfo } from './DataLoadingInfo.tsx';
-import { GoodsList } from './GoodsList.tsx';
-import { GoodsWithPartsList } from './GoodsWithPartsList.tsx';
-import { Nav } from './Nav.tsx';
-import { TotalGoods } from './TotalGoods.tsx';
+import TotalGoods from './components/TotalGoods';
+import DataLoadingInfo from './components/DataLoadingInfo';
+import Nav from './components/Nav';
+import GoodsWithPartsList from './components/GoodsWithPartsList';
+import GoodsList from './components/GoodsList';
 
-const getGoods = () => {
-  return fetch('/goods')
-    .then(response => response.json());
-};
+import { getGoods } from './api/getGoods.ts';
+
 
 export const App = () => {
   const [goods, setGoods] = useState(null);

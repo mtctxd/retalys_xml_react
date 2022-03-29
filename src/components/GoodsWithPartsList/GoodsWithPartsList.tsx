@@ -1,7 +1,7 @@
 import React from 'react';
 import PaginationList from 'react-pagination-list';
 
-import './styles.css';
+import '../../styles.css';
 
 
 export const GoodsWithPartsList = ({ goods }) => {
