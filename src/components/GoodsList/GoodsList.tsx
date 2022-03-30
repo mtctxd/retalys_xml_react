@@ -1,5 +1,7 @@
-import React from 'react';
-import PaginationList from 'react-pagination-list';
+/* eslint-disable react/jsx-props-no-spreading */
+import React, { useMemo } from 'react';
+// import PaginationList from 'react-pagination-list';
+import { useTable } from 'react-table';
 
 import '../../styles.css';
 import ExportedData from '../../types';
@@ -16,23 +18,73 @@ const GoodsList: React.FC<Props> = ({
 }) => {
   if (goods !== null) {
     const { item } = goods.items[0];
+    const columns = useMemo(() => ([
+      {
+        Header: 'code',
+        accesor: '$.code',
+      },
+      {
+        Header: 'name',
+        accesor: (row) => row.$.name,
+      },
+    ]), []);
+    const {
+      getTableProps,
+      getTableBodyProps,
+      headerGroups,
+      rows,
+      prepareRow,
+    } = useTable({
+      columns,
+      data: item,
+    });
+
+    // return (
+    //   <div className="content">
+    //     <PaginationList
+    //       data={item}
+    //       pageSize={20}
+    //       renderItem={(itemFromProps) => {
+    //         const processedItem = itemFromProps.$;
+
+    //         return (
+    //           <li key={processedItem.code}>
+    //             {processedItem.name}
+    //           </li>
+    //         );
+    //       }}
+    //     />
+    //   </div>
+    // );
 
     return (
-      <div className="content">
-        <PaginationList
-          data={item}
-          pageSize={20}
-          renderItem={(itemFromProps) => {
-            const processedItem = itemFromProps.$;
-
+      <table {...getTableProps()}>
+        <thead>
+          {headerGroups.map((headerGroup) => (
+            <tr {...headerGroup.getHeaderGroupProps()}>
+              {headerGroup.headers.map((column) => (
+                <th {...column.getHeaderProps()}>
+                  {column.render('Header')}
+                </th>
+              ))}
+            </tr>
+          ))}
+        </thead>
+        <tbody {...getTableBodyProps()}>
+          {rows.map((row) => {
+            prepareRow(row);
             return (
-              <li key={processedItem.code}>
-                {processedItem.name}
-              </li>
+              <tr {...row.getRowProps()}>
+                {row.cells.map((cell) => (
+                  <td {...cell.getCellProps()}>
+                    {cell.render('Cell')}
+                  </td>
+                ))}
+              </tr>
             );
-          }}
-        />
-      </div>
+          })}
+        </tbody>
+      </table>
     );
   }
 
