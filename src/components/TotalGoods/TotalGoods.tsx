@@ -14,9 +14,11 @@ const TotalGoods: React.FC<Props> = ({
   goods, isFetchFailed, isDataLoading,
 }) => {
   if (goods !== null) {
-    <div>
-      {`Total amoun of items: ${goods.items[0].item.length}`}
-    </div>;
+    return (
+      <div>
+        {`Total amoun of items: ${goods.items[0].item.length}`}
+      </div>
+    );
   }
 
   return (
