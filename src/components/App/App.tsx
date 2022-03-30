@@ -39,6 +39,7 @@ const App = () => {
               <DataLoadingInfo
                 goods={goods}
                 isFetchFailed={isFetchFailed}
+                isDataLoading={isDataLoading}
               />
             )}
           />
@@ -47,7 +48,6 @@ const App = () => {
             element={(
               <TotalGoods
                 goods={goods}
-                isFetchFailed={isFetchFailed}
               />
             )}
           />

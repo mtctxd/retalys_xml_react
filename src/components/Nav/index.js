@@ -1,3 +1,3 @@
-import { Nav } from "./Nav.tsx";
+import Nav from './Nav.tsx';
 
 export default Nav;

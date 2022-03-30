@@ -5,22 +5,22 @@ import xml2js from 'xml2js';
 import cors from 'cors';
 import { fileURLToPath } from 'url';
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
+const filename = fileURLToPath(import.meta.url);
+const dirname = path.dirname(filename);
 const PORT = process.env.PORT || 3001;
 const file = 'src/api/export_full.xml';
 
 const app = express();
 
 app
-  .use(express.static(path.join(__dirname, '../../public')))
+  .use(express.static(path.join(dirname, '../../public')))
   .use(cors())
   .get('/', (req, res) => res.render('../../public/index'))
   .get('/goods', (req, res) => {
     const parser = new xml2js.Parser();
 
-    fs.readFile(file, function (err, data) {
-      parser.parseString(data, function (err, result) {
+    fs.readFile(file, (err, data) => {
+      parser.parseString(data, (_err, result) => {
         res.send(result.export_full);
       });
     });

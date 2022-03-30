@@ -3,11 +3,14 @@ import React from 'react';
 type Props = {
   goods: Object,
   isFetchFailed: boolean,
+  isDataLoading: boolean,
 }
 
-const DataLoadingInfo: React.FC<Props> = ({ goods, isFetchFailed }) => (
+const DataLoadingInfo: React.FC<Props> = ({
+  goods, isFetchFailed, isDataLoading,
+}) => (
   <div>
-    {!goods && (
+    {isDataLoading && (
       'Loading goods from server...'
     )}
     {isFetchFailed && (

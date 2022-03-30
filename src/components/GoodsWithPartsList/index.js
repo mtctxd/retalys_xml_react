@@ -1,3 +1,3 @@
-import { GoodsWithPartsList } from './GoodsWithPartsList.tsx';
+import GoodsWithPartsList from './GoodsWithPartsList.tsx';
 
 export default GoodsWithPartsList;

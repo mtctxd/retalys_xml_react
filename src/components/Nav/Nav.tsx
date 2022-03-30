@@ -3,18 +3,28 @@ import { Link } from 'react-router-dom';
 import classNames from 'classnames';
 
 import '../../styles.css';
+import ExportedData from '../../types';
 
-export const Nav = ({ goods, isFetchFailed, isDataLoading}) => {
+type Props = {
+  goods: ExportedData,
+  isFetchFailed: boolean,
+  isDataLoading: boolean,
+};
+
+const Nav: React.FC<Props> = ({
+  goods, isFetchFailed, isDataLoading,
+}) => {
   const buttonClass = classNames(
     'button',
-    'is-link', {
-      'disabled': !goods && isFetchFailed,
-      'is-loading': isDataLoading
-    }
-  )
+    'is-link',
+    {
+      disabled: !goods && isFetchFailed,
+      'is-loading': isDataLoading,
+    },
+  );
 
   return (
-    <div className='nav'>
+    <div className="nav">
       <Link to="/" className={buttonClass}>
         Home
       </Link>
@@ -30,3 +40,5 @@ export const Nav = ({ goods, isFetchFailed, isDataLoading}) => {
     </div>
   );
 };
+
+export default Nav;

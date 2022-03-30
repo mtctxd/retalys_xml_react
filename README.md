@@ -28,6 +28,13 @@ the task and under each link there will be the individual statements.
 - Express JS
 - xml2js
 
+## Need to change
+
+- Host it somewhere (wasted time trying to deploy it somewhere before)
+- Better typing
+- Better styling
+- ...
+
 ## Available Scripts
 
 In the project directory, you can run:

@@ -1,3 +1,3 @@
-import { getGoods } from "./getGoods.ts";
+import getGoods from './getGoods.ts';
 
 export default getGoods;

@@ -2,10 +2,11 @@ import React from 'react';
 import PaginationList from 'react-pagination-list';
 
 import '../../styles.css';
+import ExportedData from '../../types';
 
 type Props = {
-  goods: Object,
-}
+  goods: ExportedData,
+};
 
 const GoodsList: React.FC<Props> = ({ goods }) => {
   const { item } = goods.items[0];
@@ -15,8 +16,8 @@ const GoodsList: React.FC<Props> = ({ goods }) => {
       <PaginationList
         data={item}
         pageSize={20}
-        renderItem={(item) => {
-          const processedItem = item.$;
+        renderItem={(itemFromProps) => {
+          const processedItem = itemFromProps.$;
 
           return (
             <li key={processedItem.code}>
