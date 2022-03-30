@@ -1,3 +1,5 @@
+/* eslint-disable react/no-unstable-nested-components */
+/* eslint-disable react/prop-types */
 /* eslint-disable react/jsx-props-no-spreading */
 import React, { useMemo } from 'react';
 // import PaginationList from 'react-pagination-list';
@@ -21,11 +23,11 @@ const GoodsList: React.FC<Props> = ({
     const columns = useMemo(() => ([
       {
         Header: 'code',
-        accesor: '$.code',
+        accessor: '$.code',
       },
       {
         Header: 'name',
-        accesor: (row) => row.$.name,
+        accessor: '$.name',
       },
     ]), []);
     const {
@@ -38,24 +40,6 @@ const GoodsList: React.FC<Props> = ({
       columns,
       data: item,
     });
-
-    // return (
-    //   <div className="content">
-    //     <PaginationList
-    //       data={item}
-    //       pageSize={20}
-    //       renderItem={(itemFromProps) => {
-    //         const processedItem = itemFromProps.$;
-
-    //         return (
-    //           <li key={processedItem.code}>
-    //             {processedItem.name}
-    //           </li>
-    //         );
-    //       }}
-    //     />
-    //   </div>
-    // );
 
     return (
       <table {...getTableProps()}>
