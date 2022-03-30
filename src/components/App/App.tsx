@@ -48,6 +48,8 @@ const App = () => {
             element={(
               <TotalGoods
                 goods={goods}
+                isFetchFailed={isFetchFailed}
+                isDataLoading={isDataLoading}
               />
             )}
           />
@@ -56,6 +58,8 @@ const App = () => {
             element={(
               <GoodsList
                 goods={goods}
+                isFetchFailed={isFetchFailed}
+                isDataLoading={isDataLoading}
               />
             )}
           />
@@ -65,6 +69,7 @@ const App = () => {
               <GoodsWithPartsList
                 goods={goods}
                 isFetchFailed={isFetchFailed}
+                isDataLoading={isDataLoading}
               />
             )}
           />

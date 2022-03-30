@@ -11,7 +11,7 @@ const DataLoadingInfo: React.FC<Props> = ({
 }) => (
   <div>
     {isDataLoading && (
-      'Loading goods from server...'
+      'Loading data from server...'
     )}
     {isFetchFailed && (
       'Failed to load goods'
