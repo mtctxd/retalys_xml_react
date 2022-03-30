@@ -1,5 +1,5 @@
-import React from 'react';
-import PaginationList from 'react-pagination-list';
+import React, { useMemo } from 'react';
+import { useTable, usePagination } from 'react-table';
 
 import '../../styles.css';
 import ExportedData from '../../types';
@@ -17,31 +17,156 @@ const GoodsWithPartsList: React.FC<Props> = ({
   if (goods !== null) {
     let { item } = goods.items[0];
     item = item.filter((filteredItem) => filteredItem.parts);
+    const renderPartsCell = ({ value }) => (
+      <ul>
+        {value.map((part) => (
+          <li key={part.$.code}>
+            {part.$.name}
+          </li>
+        ))}
+      </ul>
+    );
+    const columns = useMemo(() => ([
+      {
+        Header: 'Product ID',
+        accessor: '$.code',
+      },
+      {
+        Header: 'Product name',
+        accessor: '$.name',
+      },
+      {
+        Header: 'Parts',
+        accessor: 'parts[0].part[0].item',
+        Cell: renderPartsCell,
+      },
+    ]), []);
+    const data = useMemo(() => item, [goods]);
+    const {
+      getTableProps,
+      getTableBodyProps,
+      headerGroups,
+      prepareRow,
+      page,
+      canPreviousPage,
+      canNextPage,
+      pageOptions,
+      pageCount,
+      gotoPage,
+      nextPage,
+      previousPage,
+      setPageSize,
+      state: { pageIndex, pageSize },
+    } = useTable(
+      {
+        columns,
+        data,
+        initialState: { pageIndex: 2 },
+      },
+      usePagination,
+    );
 
     return (
-      <div className="content">
-        <PaginationList
-          data={item}
-          pageSize={5}
-          renderItem={(renderedItem) => {
-            const processedItem = renderedItem.$;
-
-            return (
-              <li key={processedItem.code}>
-                {processedItem.name}
-
-                <ul>
-                  {renderedItem.parts[0].part[0].item.map((part) => (
-                    <li key={part.$.code}>
-                      {part.$.name}
-                    </li>
+      <>
+        <div className="pagination">
+          <button
+            type="button"
+            onClick={() => gotoPage(0)}
+            disabled={!canPreviousPage}
+          >
+            {'<<'}
+          </button>
+          {' '}
+          <button
+            type="button"
+            onClick={() => previousPage()}
+            disabled={!canPreviousPage}
+          >
+            {'<'}
+          </button>
+          {' '}
+          <button
+            type="button"
+            onClick={() => nextPage()}
+            disabled={!canNextPage}
+          >
+            {'>'}
+          </button>
+          {' '}
+          <button
+            type="button"
+            onClick={() => gotoPage(pageCount - 1)}
+            disabled={!canNextPage}
+          >
+            {'>>'}
+          </button>
+          {' '}
+          <span>
+            Page
+            {' '}
+            <strong>
+              {pageIndex + 1}
+              of
+              {pageOptions.length}
+            </strong>
+            {' '}
+          </span>
+          <span>
+            | Go to page:
+            {' '}
+            <input
+              type="number"
+              defaultValue={pageIndex + 1}
+              onChange={(e) => {
+                const pageOnchange = e.target.value ? Number(e.target.value) - 1 : 0;
+                gotoPage(pageOnchange);
+              }}
+              style={{ width: '100px' }}
+            />
+          </span>
+          {' '}
+          <select
+            value={pageSize}
+            onChange={(e) => {
+              setPageSize(Number(e.target.value));
+            }}
+          >
+            {[10, 20, 30, 40, 50].map((pageSizeSelector) => (
+              <option key={pageSizeSelector} value={pageSizeSelector}>
+                Show
+                {pageSizeSelector}
+              </option>
+            ))}
+          </select>
+        </div>
+        <table {...getTableProps()}>
+          <thead>
+            {headerGroups.map((headerGroup) => (
+              <tr {...headerGroup.getHeaderGroupProps()}>
+                {headerGroup.headers.map((column) => (
+                  <th {...column.getHeaderProps()}>
+                    {column.render('Header')}
+                  </th>
+                ))}
+              </tr>
+            ))}
+          </thead>
+          <tbody {...getTableBodyProps()}>
+            {page.map((row) => {
+              prepareRow(row);
+              return (
+                <tr {...row.getRowProps()}>
+                  {row.cells.map((cell) => (
+                    <td {...cell.getCellProps()}>
+                      {cell.render('Cell')}
+                    </td>
                   ))}
-                </ul>
-              </li>
-            );
-          }}
-        />
-      </div>
+                </tr>
+              );
+            })}
+          </tbody>
+        </table>
+      </>
     );
   }
 

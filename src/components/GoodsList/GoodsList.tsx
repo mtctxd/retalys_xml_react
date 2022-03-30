@@ -1,9 +1,4 @@
-/* eslint-disable no-shadow */
-/* eslint-disable react/no-unstable-nested-components */
-/* eslint-disable react/prop-types */
-/* eslint-disable react/jsx-props-no-spreading */
 import React, { useMemo } from 'react';
-// import PaginationList from 'react-pagination-list';
 import { useTable, usePagination } from 'react-table';
 
 import '../../styles.css';
@@ -23,11 +18,11 @@ const GoodsList: React.FC<Props> = ({
     const { item } = goods.items[0];
     const columns = useMemo(() => ([
       {
-        Header: 'code',
+        Header: 'Product ID',
         accessor: '$.code',
       },
       {
-        Header: 'name',
+        Header: 'Product name',
         accessor: '$.name',
       },
     ]), []);
@@ -107,8 +102,8 @@ const GoodsList: React.FC<Props> = ({
               type="number"
               defaultValue={pageIndex + 1}
               onChange={(e) => {
-                const page = e.target.value ? Number(e.target.value) - 1 : 0;
-                gotoPage(page);
+                const pageOnchange = e.target.value ? Number(e.target.value) - 1 : 0;
+                gotoPage(pageOnchange);
               }}
               style={{ width: '100px' }}
             />
@@ -120,10 +115,10 @@ const GoodsList: React.FC<Props> = ({
               setPageSize(Number(e.target.value));
             }}
           >
-            {[10, 20, 30, 40, 50].map((pageSize) => (
-              <option key={pageSize} value={pageSize}>
+            {[10, 20, 30, 40, 50].map((pageSizeSelector) => (
+              <option key={pageSizeSelector} value={pageSizeSelector}>
                 Show
-                {pageSize}
+                {pageSizeSelector}
               </option>
             ))}
           </select>
