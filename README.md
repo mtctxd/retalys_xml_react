@@ -27,6 +27,7 @@ the task and under each link there will be the individual statements.
 - React router
 - Express JS
 - xml2js
+- react-table
 
 ## Need to change
 
