@@ -13,8 +13,8 @@ const file = 'src/api/export_full.xml';
 const app = express();
 
 app
-  .use(express.static(path.join(dirname, '../../public')))
   .use(cors())
+  .use(express.static(path.join(dirname, '../../public')))
   .get('/', (req, res) => res.render('../../public/index'))
   .get('/goods', (req, res) => {
     const parser = new xml2js.Parser();

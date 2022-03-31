@@ -1,4 +1,4 @@
-# Getting Started with Create React App
+# retalys_xml_react
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 

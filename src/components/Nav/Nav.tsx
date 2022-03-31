@@ -24,7 +24,7 @@ const Nav: React.FC<Props> = ({
   );
 
   return (
-    <div className="nav">
+    <div className="nav content-container">
       <Link to="/" className={buttonClass}>
         Home
       </Link>

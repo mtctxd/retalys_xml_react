@@ -68,7 +68,7 @@ const GoodsWithPartsList: React.FC<Props> = ({
 
     return (
       <>
-        <div className="pagination">
+        <div className="pagination content-container">
           <button
             type="button"
             onClick={() => gotoPage(0)}
@@ -139,7 +139,7 @@ const GoodsWithPartsList: React.FC<Props> = ({
             ))}
           </select>
         </div>
-        <table {...getTableProps()}>
+        <table className="table-container" {...getTableProps()}>
           <thead>
             {headerGroups.map((headerGroup) => (
               <tr {...headerGroup.getHeaderGroupProps()}>

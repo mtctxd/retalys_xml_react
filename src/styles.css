@@ -2,13 +2,13 @@
 
 .nav {
     display: flex;
-    gap: 15px;
+    justify-content: space-between;
 }
 
-  table {
+table {
     border-spacing: 0;
     border: 1px solid black;
-    }
+}
 
 tr:last-child td {
     border-bottom: 0;
@@ -33,4 +33,14 @@ td:last-child {
 
 .pagination {
     padding: 0.5rem;
+}
+
+.content-container {
+    margin: 0 auto;
+    width: 700px;
+}
+
+.table-container {
+    margin: 0 auto;
+    min-width: 700px;
 }

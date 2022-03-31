@@ -26,7 +26,7 @@ const App = () => {
 
   return (
     <Router>
-      <div>
+      <div className="app">
         <Nav
           goods={goods}
           isFetchFailed={isFetchFailed}
