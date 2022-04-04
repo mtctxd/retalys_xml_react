@@ -5,10 +5,8 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 ## Startup guide
 
 1. `npm i`
-2. `npm run server`
-3. `open another terminal`
-4. `npm start`
-5. `open your browser at http://localhost:3000`
+2. `npm run dev`
+3. `open your browser at http://localhost:3000`
 
 ## Main task
 
@@ -40,6 +38,14 @@ the task and under each link there will be the individual statements.
 
 In the project directory, you can run:
 
+### `npm run dev`
+
+Runs the app in the development mode.\
+Both both scripts `npm run server` and `npm start`;
+
+The page will reload if you make edits.\
+You will also see any lint errors in the console.
+
 ### `npm start`
 
 Runs the app in the development mode.\
@@ -50,7 +56,7 @@ You will also see any lint errors in the console.
 
 ### `npm run server`
 
-Runs the app in the development mode.\
+Runs the app in the development mode with nodemon.\
 Starts server [http://localhost:3001](http://localhost:3001) to view it in the browser.
 There is one endpoint [/goods](http://localhost:3001/goods) that make request to server and return data as JS object.
 
